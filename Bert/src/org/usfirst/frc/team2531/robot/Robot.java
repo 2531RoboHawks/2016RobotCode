@@ -8,6 +8,7 @@ import org.usfirst.frc.team2531.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,7 +39,8 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		tankdrive = new TankDrive();
 		crossdefence = new CrossDefense();
-
+		RobotMap.imu.calibrate();
+		RobotMap.imu.startLiveWindowMode();
 	}
 
 	/**
@@ -60,6 +62,7 @@ public class Robot extends IterativeRobot {
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -93,6 +96,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	public void teleopInit() {
@@ -113,6 +117,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -120,5 +125,11 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+
+	public void updateSmartDashboard() {
+		SmartDashboard.putNumber("roll", RobotMap.imu.getPitch());
+		SmartDashboard.putNumber("pitch", RobotMap.imu.getYaw());
+		SmartDashboard.putNumber("yaw", RobotMap.imu.getRoll());
 	}
 }
