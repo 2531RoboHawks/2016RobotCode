@@ -8,13 +8,13 @@ import frclib.pid.PID2;
 /**
  *
  */
-public class CrossDefence extends Command {
+public class CrossDefense extends Command {
 
 	PID2 head = new PID2(0, 0, 0, Robot.heading);
 
 	boolean crossed = false;
 
-	public CrossDefence() {
+	public CrossDefense() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
@@ -27,7 +27,7 @@ public class CrossDefence extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

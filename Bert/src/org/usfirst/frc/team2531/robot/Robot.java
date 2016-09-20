@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team2531.robot;
 
-import org.usfirst.frc.team2531.robot.commands.CrossDefence;
+import org.usfirst.frc.team2531.robot.commands.CrossDefense;
 import org.usfirst.frc.team2531.robot.commands.TankDrive;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 
@@ -23,7 +23,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	// commands
 	public static TankDrive tankdrive;
-	public static CrossDefence crossdefence;
+	public static CrossDefense crossdefence;
 	// variables
 	public static int mode = 0;
 	public static double heading;
@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new Drive();
 		tankdrive = new TankDrive();
-		crossdefence = new CrossDefence();
+		crossdefence = new CrossDefense();
 
 	}
 
