@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 	// subsystems
 	public static Drive drive;
 	public static BallElevator elevator;
-	public static BallIntake inatake;
+	public static BallIntake intake;
 	// default commands
 	public static TankDrive tankdrive;
 	// variables
@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
 		drive = new Drive();
 		tankdrive = new TankDrive();
 		elevator = new BallElevator();
-		inatake = new BallIntake();
+		intake = new BallIntake();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
 	}
