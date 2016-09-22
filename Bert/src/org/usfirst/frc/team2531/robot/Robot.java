@@ -3,6 +3,8 @@ package org.usfirst.frc.team2531.robot;
 
 import org.usfirst.frc.team2531.robot.commands.CrossDefense;
 import org.usfirst.frc.team2531.robot.commands.TankDrive;
+import org.usfirst.frc.team2531.robot.subsystems.BallElevator;
+import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -22,6 +24,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	// subsystems
 	public static Drive drive;
+	public static BallElevator elevator;
+	public static BallIntake inatake;
 	// commands
 	public static TankDrive tankdrive;
 	public static CrossDefense crossdefence;
@@ -38,6 +42,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new Drive();
 		tankdrive = new TankDrive();
+		elevator = new BallElevator();
+		inatake = new BallIntake();
 		crossdefence = new CrossDefense();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
