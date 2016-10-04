@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2531.robot;
 
+import org.usfirst.frc.team2531.robot.commands.CrossDefense;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -42,8 +44,9 @@ public class OI {
 
 	public static JoystickButton intake = new JoystickButton(gamepad, 5);
 	public static JoystickButton shoot = new JoystickButton(gamepad, 6);
+	public static JoystickButton cross = new JoystickButton(right, 3);
 
 	public OI() {
-
+		cross.whileHeld(new CrossDefense());
 	}
 }
