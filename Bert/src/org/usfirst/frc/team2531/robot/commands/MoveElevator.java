@@ -2,16 +2,12 @@ package org.usfirst.frc.team2531.robot.commands;
 
 import org.usfirst.frc.team2531.robot.Robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class MoveElevator extends Command {
-
-	DigitalInput up = new DigitalInput(0);
-	DigitalInput down = new DigitalInput(1);
 
 	boolean done = false;
 	boolean direction = true;
@@ -31,15 +27,15 @@ public class MoveElevator extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (direction) {
-			Robot.elevator.setSpeed(0.5);
-			if (!up.get()) {
-				done = true;
-			}
+			Robot.elevator.setSpeed(1);
+			// if (RobotMap.elevatorup.get()) {
+			// done = true;
+			// }
 		} else {
-			Robot.elevator.setSpeed(-0.5);
-			if (!down.get()) {
-				done = true;
-			}
+			Robot.elevator.setSpeed(-1);
+			// if (RobotMap.elevatordown.get()) {
+			// done = true;
+			// }
 		}
 	}
 
