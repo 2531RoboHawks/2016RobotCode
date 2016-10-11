@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 
-	CANTalon wheel = new CANTalon(1);
+	CANTalon wheel = new CANTalon(2);
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
