@@ -1,12 +1,15 @@
 
 package org.usfirst.frc.team2531.robot;
 
-import org.usfirst.frc.team2531.robot.commands.TankDrive;
+import org.usfirst.frc.team2531.robot.subsystems.BallElevator;
+import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
+import org.usfirst.frc.team2531.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,8 +23,9 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	// subsystems
 	public static Drive drive;
-	// commands
-	public static TankDrive tankdrive;
+	public static BallElevator elevator;
+	public static BallIntake intake;
+	public static Shooter shooter;
 	// variables
 	public static int mode = 0;
 	public static double heading;
@@ -32,10 +36,13 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		System.out.println("-> Robot");
-		oi = new OI();
 		drive = new Drive();
-		tankdrive = new TankDrive();
-
+		elevator = new BallElevator();
+		intake = new BallIntake();
+		shooter = new Shooter();
+		oi = new OI();
+		RobotMap.imu.calibrate();
+		RobotMap.imu.startLiveWindowMode();
 	}
 
 	/**
@@ -57,6 +64,7 @@ public class Robot extends IterativeRobot {
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -90,6 +98,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	public void teleopInit() {
@@ -110,6 +119,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -117,5 +127,11 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+
+	public void updateSmartDashboard() {
+		SmartDashboard.putNumber("roll", RobotMap.imu.getPitch());
+		SmartDashboard.putNumber("pitch", RobotMap.imu.getYaw());
+		SmartDashboard.putNumber("yaw", RobotMap.imu.getRoll());
 	}
 }

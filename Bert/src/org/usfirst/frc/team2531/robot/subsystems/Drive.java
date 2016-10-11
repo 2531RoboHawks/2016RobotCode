@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2531.robot.subsystems;
 
-import org.usfirst.frc.team2531.robot.Robot;
+import org.usfirst.frc.team2531.robot.commands.TankDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -16,7 +16,7 @@ public class Drive extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(Robot.tankdrive);
+		setDefaultCommand(new TankDrive());
 	}
 
 	public void TankDrive(Joystick left, Joystick right) {
