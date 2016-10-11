@@ -36,11 +36,11 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		System.out.println("-> Robot");
-		oi = new OI();
 		drive = new Drive();
 		elevator = new BallElevator();
 		intake = new BallIntake();
 		shooter = new Shooter();
+		oi = new OI();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
 	}

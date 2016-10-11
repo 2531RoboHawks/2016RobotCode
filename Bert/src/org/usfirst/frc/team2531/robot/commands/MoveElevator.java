@@ -10,9 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoveElevator extends Command {
 
-	DigitalInput up = new DigitalInput(0);
-	DigitalInput down = new DigitalInput(1);
-
 	boolean done = false;
 	boolean direction = true;
 
@@ -32,14 +29,8 @@ public class MoveElevator extends Command {
 	protected void execute() {
 		if (direction) {
 			Robot.elevator.setSpeed(0.5);
-			if (!up.get()) {
-				done = true;
-			}
 		} else {
 			Robot.elevator.setSpeed(-0.5);
-			if (!down.get()) {
-				done = true;
-			}
 		}
 	}
 
