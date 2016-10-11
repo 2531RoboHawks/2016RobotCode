@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2531.robot.commands;
 
 import org.usfirst.frc.team2531.robot.Robot;
+import org.usfirst.frc.team2531.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -28,14 +29,14 @@ public class MoveElevator extends Command {
 	protected void execute() {
 		if (direction) {
 			Robot.elevator.setSpeed(1);
-			// if (RobotMap.elevatorup.get()) {
-			// done = true;
-			// }
+			if (RobotMap.elevatorup.get()) {
+				done = true;
+			}
 		} else {
 			Robot.elevator.setSpeed(-1);
-			// if (RobotMap.elevatordown.get()) {
-			// done = true;
-			// }
+			if (RobotMap.elevatordown.get()) {
+				done = true;
+			}
 
 		}
 	}
