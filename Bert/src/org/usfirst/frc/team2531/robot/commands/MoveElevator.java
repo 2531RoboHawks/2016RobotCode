@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class MoveElevator extends Command {
 
 	DigitalInput up = new DigitalInput(0);
-	DigitalInput down = new DigitalInput(0);
+	DigitalInput down = new DigitalInput(1);
 
 	boolean done = false;
 	boolean direction = true;
@@ -50,6 +50,7 @@ public class MoveElevator extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.elevator.setSpeed(0.0);
 		System.out.println("-! MoveElevator");
 	}
 

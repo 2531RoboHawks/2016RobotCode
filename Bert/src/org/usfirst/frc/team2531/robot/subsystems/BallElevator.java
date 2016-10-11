@@ -10,7 +10,7 @@ public class BallElevator extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	CANTalon lift = new CANTalon(4);
+	CANTalon lift = new CANTalon(3);
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

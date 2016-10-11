@@ -1,10 +1,10 @@
 
 package org.usfirst.frc.team2531.robot;
 
-import org.usfirst.frc.team2531.robot.commands.TankDrive;
 import org.usfirst.frc.team2531.robot.subsystems.BallElevator;
 import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
+import org.usfirst.frc.team2531.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,8 +25,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static BallElevator elevator;
 	public static BallIntake intake;
-	// default commands
-	public static TankDrive tankdrive;
+	public static Shooter shooter;
 	// variables
 	public static int mode = 0;
 	public static double heading;
@@ -39,9 +38,9 @@ public class Robot extends IterativeRobot {
 		System.out.println("-> Robot");
 		oi = new OI();
 		drive = new Drive();
-		tankdrive = new TankDrive();
 		elevator = new BallElevator();
 		intake = new BallIntake();
+		shooter = new Shooter();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
 	}
