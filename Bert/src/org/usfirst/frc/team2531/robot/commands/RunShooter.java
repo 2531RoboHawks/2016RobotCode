@@ -2,6 +2,7 @@ package org.usfirst.frc.team2531.robot.commands;
 
 import org.usfirst.frc.team2531.robot.OI;
 import org.usfirst.frc.team2531.robot.Robot;
+import org.usfirst.frc.team2531.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -37,7 +38,11 @@ public class RunShooter extends Command {
 			Robot.shooter.setSpeed(-pow);
 			done = true;
 		} else {
-			Robot.shooter.setSpeed(-OI.gamepad.getRawAxis(3));
+			if (RobotMap.USE_GAMEPAD_ACTIONS) {
+				Robot.shooter.setSpeed(-OI.gamepad.getRawAxis(3));
+			} else {
+				Robot.shooter.setSpeed(OI.right.getRawAxis(3) + 1);
+			}
 		}
 	}
 
