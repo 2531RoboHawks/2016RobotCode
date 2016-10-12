@@ -2,6 +2,7 @@ package org.usfirst.frc.team2531.robot;
 
 import org.usfirst.frc.team2531.robot.commands.MoveElevator;
 import org.usfirst.frc.team2531.robot.commands.RunIntake;
+import org.usfirst.frc.team2531.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -46,6 +47,7 @@ public class OI {
 	public static JoystickButton intake;
 	public static JoystickButton elevatorup;
 	public static JoystickButton elevatordown;
+	public static JoystickButton shoot;
 
 	public OI() {
 		left = new Joystick(1);
@@ -57,5 +59,8 @@ public class OI {
 		intake.whileHeld(new RunIntake());
 		elevatorup.whileHeld(new MoveElevator(true));
 		elevatordown.whileHeld(new MoveElevator(false));
+		shoot = new JoystickButton(gamepad, 2);
+		shoot.whileHeld(new Shoot(-0.7));
+
 	}
 }

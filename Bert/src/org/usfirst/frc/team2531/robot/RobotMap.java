@@ -20,6 +20,6 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	public static ADIS16448 imu = new ADIS16448();
-	public static DigitalInput elevatorup = new DigitalInput(1);
-	public static DigitalInput elevatordown = new DigitalInput(0);
+	public static DigitalInput elevatorup = new DigitalInput(0);
+	public static DigitalInput elevatordown = new DigitalInput(1);
 }
