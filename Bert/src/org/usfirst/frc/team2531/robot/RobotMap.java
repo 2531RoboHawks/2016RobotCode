@@ -10,16 +10,15 @@ import frclib.sensors.ADIS16448;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
+	// Control Configurations
+	public static boolean USE_GAMEPAD_DRIVEING = true;
+	public static boolean USE_GAMEPAD_ACTIONS = true;
+	public static boolean DEMO_MODE = false;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+	// Sensors
 	public static ADIS16448 imu = new ADIS16448();
+
+	// Switches
 	public static DigitalInput elevatorup = new DigitalInput(0);
 	public static DigitalInput elevatordown = new DigitalInput(1);
 }

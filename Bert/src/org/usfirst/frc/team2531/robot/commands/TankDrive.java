@@ -2,6 +2,7 @@ package org.usfirst.frc.team2531.robot.commands;
 
 import org.usfirst.frc.team2531.robot.OI;
 import org.usfirst.frc.team2531.robot.Robot;
+import org.usfirst.frc.team2531.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,15 @@ public class TankDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drive.TankDrive(OI.left, OI.right);
+		if (RobotMap.DEMO_MODE) {
+			Robot.drive.TankDrive(OI.gamepad.getRawAxis(2) / 2, OI.gamepad.getRawAxis(5) / 2);
+		} else {
+			if (RobotMap.USE_GAMEPAD_DRIVEING) {
+				Robot.drive.TankDrive(OI.gamepad.getRawAxis(2), OI.gamepad.getRawAxis(5));
+			} else {
+				Robot.drive.TankDrive(OI.left, OI.right);
+			}
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
