@@ -2,7 +2,7 @@ package org.usfirst.frc.team2531.robot;
 
 import org.usfirst.frc.team2531.robot.commands.MoveElevator;
 import org.usfirst.frc.team2531.robot.commands.RunIntake;
-import org.usfirst.frc.team2531.robot.commands.Shoot;
+import org.usfirst.frc.team2531.robot.commands.RunShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -41,7 +41,7 @@ public class OI {
 			intake.whileHeld(new RunIntake());
 			elevatorup.whileHeld(new MoveElevator(true));
 			elevatordown.whileHeld(new MoveElevator(false));
-			shoot.whenPressed(new Shoot(1));
+			shoot.whileHeld(new RunShooter(1, false));
 		}
 	}
 }
