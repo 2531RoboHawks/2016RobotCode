@@ -28,13 +28,13 @@ public class MoveElevator extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (direction) {
-			Robot.elevator.setSpeed(0.5);
-			if (!RobotMap.elevatorup.get()) {
+			Robot.elevator.setSpeed(1);
+			if (RobotMap.elevatorup.get()) {
 				done = true;
 			}
 		} else {
 			Robot.elevator.setSpeed(-0.5);
-			if (!RobotMap.elevatordown.get()) {
+			if (RobotMap.elevatordown.get()) {
 				done = true;
 			}
 
