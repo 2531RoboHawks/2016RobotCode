@@ -25,10 +25,10 @@ public class TankDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (RobotMap.DEMO_MODE) {
-			Robot.drive.TankDrive(OI.gamepad.getRawAxis(2) / 2, OI.gamepad.getRawAxis(5) / 2);
+			Robot.drive.TankDrive(OI.gamepad.getRawAxis(1) / 2, OI.gamepad.getRawAxis(5) / 2);
 		} else {
 			if (RobotMap.USE_GAMEPAD_DRIVEING) {
-				Robot.drive.TankDrive(OI.gamepad.getRawAxis(2), OI.gamepad.getRawAxis(5));
+				Robot.drive.TankDrive(OI.gamepad.getRawAxis(1), OI.gamepad.getRawAxis(5));
 			} else {
 				Robot.drive.TankDrive(OI.left, OI.right);
 			}
