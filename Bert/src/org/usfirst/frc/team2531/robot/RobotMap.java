@@ -11,7 +11,7 @@ import frclib.sensors.ADIS16448;
  */
 public class RobotMap {
 	// Control Configurations
-	public static boolean USE_GAMEPAD_DRIVEING = false;
+	public static boolean USE_GAMEPAD_DRIVEING = true;
 	// true if drive from gamepad
 
 	public static boolean USE_GAMEPAD_ACTIONS = true;
