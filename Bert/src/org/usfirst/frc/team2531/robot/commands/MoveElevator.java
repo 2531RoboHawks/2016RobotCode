@@ -33,7 +33,7 @@ public class MoveElevator extends Command {
 				done = true;
 			}
 		} else {
-			Robot.elevator.setSpeed(-0.5);
+			Robot.elevator.setSpeed(-0.8);
 			if (RobotMap.elevatordown.get()) {
 				done = true;
 			}
