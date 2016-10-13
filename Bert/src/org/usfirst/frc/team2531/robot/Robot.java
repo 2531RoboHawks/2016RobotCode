@@ -6,10 +6,12 @@ import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 import org.usfirst.frc.team2531.robot.subsystems.Shooter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,6 +45,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
+		CameraServer.getInstance().startAutomaticCapture(new USBCamera("cam0"));
 	}
 
 	/**
