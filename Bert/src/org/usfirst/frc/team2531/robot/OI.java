@@ -29,7 +29,7 @@ public class OI {
 		if (RobotMap.USE_GAMEPAD_ACTIONS) {
 			intake = new JoystickButton(gamepad, 5);
 			elevatorup = new JoystickButton(gamepad, 4);
-			elevatordown = new JoystickButton(gamepad, 1);
+			elevatordown = new JoystickButton(gamepad, 2);
 			shoot = new JoystickButton(gamepad, 6);
 		} else {
 			intake = new JoystickButton(left, 1);
