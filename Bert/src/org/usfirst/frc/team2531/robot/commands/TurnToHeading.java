@@ -4,15 +4,15 @@ import org.usfirst.frc.team2531.robot.Robot;
 import org.usfirst.frc.team2531.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frclib.pid.PID2;
+import frclib.pid.PID;
 
 public class TurnToHeading extends Command {
 
-	PID2 pid;
+	PID pid;
 
 	public TurnToHeading(double headingchange) {
 		Robot.heading += headingchange;
-		pid = new PID2(0.5, 0, 0, Robot.heading);
+		pid = new PID(5, 2, 0, Robot.heading);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class TurnToHeading extends Command {
 
 	@Override
 	protected void execute() {
-		double output = pid.compute(RobotMap.imu.getAngleY());
+		double output = pid.compute(RobotMap.imu.getYaw());
 		Robot.drive.TankDrive(-output, output);
 	}
 

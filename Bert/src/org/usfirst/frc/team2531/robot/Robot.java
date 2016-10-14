@@ -1,12 +1,15 @@
 
 package org.usfirst.frc.team2531.robot;
 
+import org.usfirst.frc.team2531.robot.commands.AutoSequence;
 import org.usfirst.frc.team2531.robot.subsystems.BallElevator;
 import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 import org.usfirst.frc.team2531.robot.subsystems.Shooter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -43,6 +46,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
+		CameraServer.getInstance().startAutomaticCapture("cam0");
 	}
 
 	/**
@@ -90,6 +94,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		Command c = new AutoSequence();
+		c.start();
 
 	}
 

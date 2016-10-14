@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2531.robot.commands;
 
 import org.usfirst.frc.team2531.robot.Robot;
+import org.usfirst.frc.team2531.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,6 +14,7 @@ public class RunIntake extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.intake);
+		requires(Robot.elevator);
 	}
 
 	// Called just before this Command runs the first time
@@ -22,6 +24,11 @@ public class RunIntake extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (RobotMap.elevatordown.get()) {
+			Robot.elevator.setSpeed(0);
+		} else {
+			Robot.elevator.setSpeed(-1);
+		}
 		Robot.intake.setSpeed(1);
 	}
 
