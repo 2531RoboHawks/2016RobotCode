@@ -6,9 +6,9 @@ import frclib.time.Delay;
 /**
  *
  */
-public class Shoot extends CommandGroup {
+public class AutoShoot extends CommandGroup {
 
-	public Shoot(double power) {
+	public AutoShoot(double power) {
 		addSequential(new RunShooter(power, true));
 		addSequential(new Delay(5000));
 		addSequential(new MoveElevator(true));

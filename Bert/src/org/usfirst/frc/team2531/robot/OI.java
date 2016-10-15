@@ -3,7 +3,6 @@ package org.usfirst.frc.team2531.robot;
 import org.usfirst.frc.team2531.robot.commands.MoveElevator;
 import org.usfirst.frc.team2531.robot.commands.RunIntake;
 import org.usfirst.frc.team2531.robot.commands.RunShooter;
-import org.usfirst.frc.team2531.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -45,7 +44,7 @@ public class OI {
 			shoot = new JoystickButton(right, 1);
 		}
 		if (!RobotMap.DEMO_MODE) {
-			autoshoot.whileHeld(new Shoot(1));
+			// autoshoot.whileHeld(new Shoot(1));
 			intakein.whileHeld(new RunIntake(0.5));
 			intakeout.whileHeld(new RunIntake(-0.5));
 			elevatorup.whileHeld(new MoveElevator(true));

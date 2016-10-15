@@ -12,6 +12,7 @@ public class MoveElevator extends Command {
 
 	boolean done = false;
 	boolean direction;
+	long start;
 
 	public MoveElevator(boolean up) {
 		// Use requires() here to declare subsystem dependencies
@@ -23,22 +24,25 @@ public class MoveElevator extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		System.out.println("-> MoveElevator");
+		start = System.currentTimeMillis() + 1000;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (direction) {
-			if (RobotMap.elevatorup.get()) {
-				done = true;
-				// System.out.println("up triggered");
-			}
 			Robot.elevator.setSpeed(1);
 		} else {
+			Robot.elevator.setSpeed(-0.2);
+		}
+		if (System.currentTimeMillis() > start) {
 			if (RobotMap.elevatordown.get()) {
 				done = true;
-				// System.out.println("down triggered");
+				System.out.println("down triggered");
 			}
-			Robot.elevator.setSpeed(-0.2);
+			if (RobotMap.elevatorup.get()) {
+				done = true;
+				System.out.println("up triggered");
+			}
 		}
 	}
 
