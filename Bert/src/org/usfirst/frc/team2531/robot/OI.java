@@ -17,7 +17,8 @@ public class OI {
 	public static Joystick right;
 	public static Joystick gamepad;
 
-	public static JoystickButton intake;
+	public static JoystickButton intakein;
+	public static JoystickButton intakeout;
 	public static JoystickButton elevatorup;
 	public static JoystickButton elevatordown;
 	public static JoystickButton shoot;
@@ -27,18 +28,21 @@ public class OI {
 		right = new Joystick(0);
 		gamepad = new Joystick(2);
 		if (RobotMap.USE_GAMEPAD_ACTIONS) {
-			intake = new JoystickButton(gamepad, 6);
+			intakein = new JoystickButton(gamepad, 6);
+			intakeout = new JoystickButton(gamepad, 8);
 			elevatorup = new JoystickButton(gamepad, 4);
 			elevatordown = new JoystickButton(gamepad, 2);
 			shoot = new JoystickButton(gamepad, 5);
 		} else {
-			intake = new JoystickButton(left, 1);
+			intakein = new JoystickButton(left, 1);
+			intakeout = new JoystickButton(left, 2);
 			elevatorup = new JoystickButton(right, 3);
 			elevatordown = new JoystickButton(right, 2);
 			shoot = new JoystickButton(right, 1);
 		}
 		if (!RobotMap.DEMO_MODE) {
-			intake.whileHeld(new RunIntake());
+			intakein.whileHeld(new RunIntake(0.5));
+			intakeout.whileHeld(new RunIntake(-0.5));
 			elevatorup.whileHeld(new MoveElevator(true));
 			elevatordown.whileHeld(new MoveElevator(false));
 			shoot.whileHeld(new RunShooter(1, false));

@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RunIntake extends Command {
 
-	public RunIntake() {
+	double pow;
+
+	public RunIntake(double pow) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.intake);
 		requires(Robot.elevator);
+		this.pow = pow;
 	}
 
 	// Called just before this Command runs the first time
@@ -27,9 +30,9 @@ public class RunIntake extends Command {
 		if (RobotMap.elevatordown.get()) {
 			Robot.elevator.setSpeed(0);
 		} else {
-			Robot.elevator.setSpeed(-1);
+			Robot.elevator.setSpeed(-0.5);
 		}
-		Robot.intake.setSpeed(1);
+		Robot.intake.setSpeed(pow);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
