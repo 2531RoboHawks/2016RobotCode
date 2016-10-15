@@ -30,26 +30,25 @@ public class MoveElevator extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (direction) {
-			Robot.elevator.setSpeed(1);
-		} else {
-			Robot.elevator.setSpeed(-0.2);
-		}
-		if (System.currentTimeMillis() > start) {
-			if (RobotMap.elevatordown.get()) {
-				done = true;
-				System.out.println("down triggered");
-			}
 			if (RobotMap.elevatorup.get()) {
 				done = true;
 				System.out.println("up triggered");
 			}
+			Robot.elevator.setSpeed(1);
+		} else {
+			if (RobotMap.elevatordown.get()) {
+				done = true;
+				System.out.println("down triggered");
+			}
+			Robot.elevator.setSpeed(-0.2);
 		}
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		// return done;
-		return false;
+		return done;
+		// return false;
 	}
 
 	// Called once after isFinished returns true

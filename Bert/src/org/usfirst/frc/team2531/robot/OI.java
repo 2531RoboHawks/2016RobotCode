@@ -44,7 +44,7 @@ public class OI {
 			shoot = new JoystickButton(right, 1);
 		}
 		if (!RobotMap.DEMO_MODE) {
-			// autoshoot.whileHeld(new Shoot(1));
+			// autoshoot.whileHeld(new AutoShoot(1));
 			intakein.whileHeld(new RunIntake(0.5));
 			intakeout.whileHeld(new RunIntake(-0.5));
 			elevatorup.whileHeld(new MoveElevator(true));
