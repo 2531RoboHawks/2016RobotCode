@@ -14,7 +14,7 @@ public class RobotMap {
 	public static boolean USE_GAMEPAD_DRIVEING = false;
 	// true if drive from gamepad
 
-	public static boolean USE_GAMEPAD_ACTIONS = false;
+	public static boolean USE_GAMEPAD_ACTIONS = true;
 	// true if control actions with gamepad
 
 	public static boolean DEMO_MODE = false;

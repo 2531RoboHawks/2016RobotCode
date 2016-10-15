@@ -3,47 +3,50 @@ package org.usfirst.frc.team2531.robot.commands;
 import org.usfirst.frc.team2531.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frclib.time.Time;
 
 /**
  *
  */
 public class MoveForward extends Command {
 
-	long moveTime;
+	double pow;
+	long end;
 	boolean finished;
-	
-    public MoveForward(long moveTime) {
-    	requires(Robot.drive);
-    	this.moveTime = moveTime;
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	System.out.println("-> MoveForward");
-    	finished = false;
-    }
+	public MoveForward(long moveTime, double pow) {
+		requires(Robot.drive);
+		this.pow = pow;
+		this.end = System.currentTimeMillis() + moveTime;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.drive.TankDrive(1, 1);
-    	Time.delayMiliseconds(moveTime);
-    	finished = true;
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		System.out.println("-> MoveForward");
+		finished = false;
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return finished;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		if (System.currentTimeMillis() > end) {
+			finished = true;
+		}
+		Robot.drive.TankDrive(-pow, -pow);
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	System.out.println("-! MoveForward");
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return finished;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.drive.TankDrive(0, 0);
+		System.out.println("-! MoveForward");
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }

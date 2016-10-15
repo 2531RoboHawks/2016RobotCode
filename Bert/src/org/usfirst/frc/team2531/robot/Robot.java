@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -32,6 +33,9 @@ public class Robot extends IterativeRobot {
 	// variables
 	public static int mode = 0;
 	public static double heading;
+
+	SendableChooser c = new SendableChooser();
+	Command auto;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -94,8 +98,10 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		Command c = new AutoSequence();
-		c.start();
+		auto = (Command) c.getSelected();
+		if (auto != null) {
+			auto.start();
+		}
 
 	}
 
@@ -108,6 +114,9 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
+		if (auto != null) {
+			auto.cancel();
+		}
 		if (mode >= 2) {
 			System.out.println("-! Autonomous");
 		}
@@ -136,6 +145,9 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void updateSmartDashboard() {
+		c.addDefault("None", null);
+		c.addObject("AutoSequence", new AutoSequence());
+		SmartDashboard.putData("Auto", c);
 		SmartDashboard.putNumber("roll", RobotMap.imu.getPitch());
 		SmartDashboard.putNumber("pitch", RobotMap.imu.getYaw());
 		SmartDashboard.putNumber("yaw", RobotMap.imu.getRoll());
