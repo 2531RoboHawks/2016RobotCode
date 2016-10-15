@@ -50,6 +50,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
+		heading = RobotMap.imu.getRoll();
 		CameraServer.getInstance().startAutomaticCapture("cam0");
 	}
 
