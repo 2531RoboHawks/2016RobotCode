@@ -14,6 +14,7 @@ public class PID {
 	private double outMin = 0.0;
 	private double Iop = 0.0;
 	private double offset = 0.0;
+	private boolean uselimits = false;
 
 	public PID(double p, double i, double d, double setpoint) {
 		this.kp = p;
@@ -33,6 +34,7 @@ public class PID {
 	}
 
 	public void setOutputLimits(double min, double max) {
+		this.uselimits = true;
 		this.outMax = max;
 		this.outMin = min;
 	}
@@ -55,12 +57,13 @@ public class PID {
 		}
 		this.output = this.kp * this.error + this.Iop - this.kd * this.inputChange;
 		this.lastInput = this.input;
-		if (this.output > this.outMax) {
-			this.output = this.outMax;
-		} else if (this.output < this.outMin) {
-			this.output = this.outMin;
+		if (this.uselimits) {
+			if (this.output > this.outMax) {
+				this.output = this.outMax;
+			} else if (this.output < this.outMin) {
+				this.output = this.outMin;
+			}
 		}
-
 		return this.output;
 	}
 }

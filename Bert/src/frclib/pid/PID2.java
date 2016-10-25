@@ -19,6 +19,7 @@ public class PID2 {
 	private double D;
 	private long end;
 	private long start;
+	private boolean uselimits = false;
 
 	public PID2(double p, double i, double d, double setpoint) {
 		this.kp = p;
@@ -38,6 +39,7 @@ public class PID2 {
 	}
 
 	public void setOutputLimits(double min, double max) {
+		this.uselimits = true;
 		this.outMax = max;
 		this.outMin = min;
 	}
@@ -60,10 +62,12 @@ public class PID2 {
 		this.I = this.ki * totalerror * looptime;
 		this.D = this.kd * this.error - this.lasterror / this.looptime;
 		this.output = this.P + this.I + this.D;
-		if (this.output > this.outMax) {
-			this.output = this.outMax;
-		} else if (this.output < this.outMin) {
-			this.output = this.outMin;
+		if (this.uselimits) {
+			if (this.output > this.outMax) {
+				this.output = this.outMax;
+			} else if (this.output < this.outMin) {
+				this.output = this.outMin;
+			}
 		}
 		this.end = System.currentTimeMillis();
 		return this.output;
