@@ -7,13 +7,14 @@ import org.usfirst.frc.team2531.robot.subsystems.BallIntake;
 import org.usfirst.frc.team2531.robot.subsystems.Drive;
 import org.usfirst.frc.team2531.robot.subsystems.Shooter;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frclib.vision.Camera;
+import frclib.vision.VisionTracking;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 
 	SendableChooser c = new SendableChooser();
 	Command auto;
+	VisionTracking cam = new VisionTracking(new Camera("cam0"));
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -51,7 +53,8 @@ public class Robot extends IterativeRobot {
 		RobotMap.imu.calibrate();
 		RobotMap.imu.startLiveWindowMode();
 		heading = RobotMap.imu.getRoll();
-		CameraServer.getInstance().startAutomaticCapture("cam0");
+		// CameraServer.getInstance().startAutomaticCapture("cam0");
+		cam.startCam();
 	}
 
 	/**
@@ -74,6 +77,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		updateSmartDashboard();
+		cam.displayRawImage();
 	}
 
 	/**
@@ -112,6 +116,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		updateSmartDashboard();
+		cam.displayRawImage();
 	}
 
 	public void teleopInit() {
@@ -136,6 +141,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		updateSmartDashboard();
+		cam.displayRawImage();
 	}
 
 	/**
