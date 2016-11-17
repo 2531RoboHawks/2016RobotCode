@@ -43,13 +43,11 @@ public class OI {
 			elevatordown = new JoystickButton(right, 2);
 			shoot = new JoystickButton(right, 1);
 		}
-		if (!RobotMap.DEMO_MODE) {
-			// autoshoot.whileHeld(new AutoShoot(1));
-			intakein.whileHeld(new RunIntake(0.5));
-			intakeout.whileHeld(new RunIntake(-0.5));
-			elevatorup.whileHeld(new MoveElevator(true));
-			elevatordown.whileHeld(new MoveElevator(false));
-			shoot.whileHeld(new RunShooter(1, false));
-		}
+		// autoshoot.whileHeld(new AutoShoot(1));
+		intakein.whileHeld(new RunIntake(0.5));
+		intakeout.whileHeld(new RunIntake(-0.5));
+		elevatorup.whileHeld(new MoveElevator(true));
+		elevatordown.whileHeld(new MoveElevator(false));
+		shoot.whileHeld(new RunShooter(1, false));
 	}
 }

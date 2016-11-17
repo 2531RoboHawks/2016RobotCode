@@ -11,18 +11,17 @@ import frclib.sensors.ADIS16448;
  */
 public class RobotMap {
 	// Control Configurations
-	public static boolean USE_GAMEPAD_DRIVEING = false;
+	public static boolean USE_GAMEPAD_DRIVEING = true;
 	// true if drive from gamepad
 
-	public static boolean USE_GAMEPAD_ACTIONS = true;
+	public static boolean USE_GAMEPAD_ACTIONS = false;
 	// true if control actions with gamepad
 
-	public static boolean DEMO_MODE = false;
+	public static boolean DEMO_MODE = true;
 	// true enables "demo mode"
 	// features: only
 	// drives with gamepad and power is
-	// limited to 50% with actions are
-	// disabled
+	// limited to 50%
 
 	// Sensors
 	public static ADIS16448 imu = new ADIS16448();
